@@ -1,0 +1,63 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Exchanges
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Exchanges</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-searchbar (input)="searchExchange($event)"></ion-searchbar>
+
+  <ion-button expand="block" (click)="filtrar()">Exchanges con fecha desconocida</ion-button>
+
+
+  <div *ngIf="(id); then thenBlock else elseBlock"></div>
+    <ng-template #thenBlock>
+      <ion-card>
+        <ion-card-content>
+          <ng-container *ngFor="let recorre of searchNames.slice(0,10); let i=index ">
+            <ion-item>
+              <ion-thumbnail slot="start">
+                <img src="{{recorre.image}}"/>
+              </ion-thumbnail>
+              <ion-label>{{recorre.name}}</ion-label>
+            </ion-item>
+          </ng-container>
+        </ion-card-content>
+      </ion-card>   
+    </ng-template>
+
+    <ng-template #elseBlock>
+      <ion-card>
+        <ion-card-content>
+          <ng-container *ngFor="let recorre of arrayDatos1.slice(0,10); let i=index ">
+            <ion-item>
+              <ion-thumbnail slot="start">
+                <img src="{{recorre.image}}"/>
+              </ion-thumbnail>
+              <ion-label>{{recorre.name}}</ion-label>
+            </ion-item>
+          </ng-container>
+        </ion-card-content>
+      </ion-card>   
+    </ng-template>
+    
+
+
+
+</ion-content>
+
+
+
+
+
+
+
+
